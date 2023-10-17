@@ -97,7 +97,7 @@ class GameManager:
         msg += get_msg_box("\n".join(self._screen_messages), title="Messages") + "\n"
 
         board = [
-            f"{str(square):<35s}: {', '.join(players)}" for players, square in zip(players_on_each_square, self._board)
+            f"{str(square):<40s}: {', '.join(players)}" for players, square in zip(players_on_each_square, self._board)
         ]
         msg += "\n".join(board)
         print(msg)

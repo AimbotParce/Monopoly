@@ -1,5 +1,6 @@
 from ..models.board import Board
 from .america import board as america
+from .madrid import board as madrid
 
 
 class VersionChoice(Board):
@@ -7,6 +8,7 @@ class VersionChoice(Board):
 
     _map = {
         "america": america,
+        "madrid": madrid,
     }
 
     def __new__(cls, version: str):
