@@ -5,4 +5,7 @@ if __name__ == "__main__":
     game = GameManager(board=board)
     game.add_player(Player("Player 1"))
     game.add_player(Player("Player 2"))
-    print(board)
+    game.print_board()
+    while True:
+        input()
+        game.play_one_move()

@@ -20,7 +20,7 @@ class Color(Enum):
 
 
 class Fore:
-    white = ""
+    white = "\033[37m"
     black = "\033[30m"
     red = "\033[31m"
     green = "\033[32m"
