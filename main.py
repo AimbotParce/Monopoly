@@ -1,4 +1,4 @@
-from monopoli import GameManager, Player, VersionChoice
+from monopoly import GameManager, Player, VersionChoice
 
 if __name__ == "__main__":
     board = VersionChoice("madrid")

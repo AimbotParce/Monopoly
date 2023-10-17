@@ -45,4 +45,4 @@ class Board:
         return f"Board({self._board})"
 
     def __str__(self) -> str:
-        return "Monopoli(%s)" % ", ".join([str(square) for square in self._board])
+        return "Monopoly(%s)" % ", ".join([str(square) for square in self._board])
