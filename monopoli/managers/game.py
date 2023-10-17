@@ -25,6 +25,8 @@ class GameManager:
         if self.current_player >= len(self._players):
             self.current_player = 0
             self.round += 1
+        self.print_board()
+        self.flush_messages()
 
     def roll_dice(self) -> int:
         return self._board.roll_dice()
@@ -53,7 +55,11 @@ class GameManager:
                 player.jail_counter = 0
             else:
                 player.jail_counter -= 1
-                self.announce(f"You are still in jail for {player.jail_counter} more turns!", player=player)
+                if player.jail_counter == 0:
+                    self.announce("You are free! You will be able to play the next turn!", player=player)
+                else:
+                    self.announce(f"You are still in jail for {player.jail_counter} more turns!", player=player)
+                self.next_player()
                 return
 
         if is_double and player.doubles_stack == 2:
@@ -67,9 +73,9 @@ class GameManager:
             player.position += 1
             if player.position >= len(self._board):
                 player.position = 0
-            self._board[player.position].pass_by(player)
+            self._board[player.position].pass_by(player, announcer=self.announce)
             self.print_board()
-        self._board[player.position].land(player)
+        self._board[player.position].land(player, announcer=self.announce)
 
         if is_double:
             self.announce("You rolled a double! Roll again!", player=player)
@@ -77,8 +83,6 @@ class GameManager:
             player.doubles_stack += 1
         else:
             self.next_player()
-            self.print_board()
-            self.flush_messages()
 
     def print_board(self, sleep_time=0.1):
         players_on_each_square = [[] for _ in range(len(self._board))]

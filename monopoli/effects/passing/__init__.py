@@ -1,3 +1,3 @@
-from .go import receive_go
+from .go import collect_go
 
-__all__ = ["receive_go"]
+__all__ = ["collect_go"]
